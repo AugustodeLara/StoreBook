@@ -53,12 +53,12 @@ public class BookDetailActivity extends AppCompatActivity {
         favoriteButton.setOnClickListener(view -> {
             if (!isBookFavorited) {
                 favoriteBook(id, title, description, thumbnailUrl);
-                showToast("Livro Favoritado!");
+                showToast("Favorite Book!");
                 isBookFavorited = true;
                 setFavoriteButtonState(true, favoriteButton);
             } else {
                 unfollowBook(id);
-                showToast("Livro Desfavoritado!");
+                showToast("Unfavorite Book!");
                 isBookFavorited = false;
                 setFavoriteButtonState(false, favoriteButton);
             }
@@ -71,9 +71,9 @@ public class BookDetailActivity extends AppCompatActivity {
     private void setFavoriteButtonState(boolean isFavorite, Button favoriteButton) {
         isBookFavorited = isFavorite;
         if (isFavorite) {
-            setButtonAppearance(favoriteButton, "FAVORITO", android.R.color.holo_green_light);
+            setButtonAppearance(favoriteButton, "FAVORITE", android.R.color.holo_green_light);
         } else {
-            setButtonAppearance(favoriteButton, "FAVORITAR", android.R.color.holo_red_light);
+            setButtonAppearance(favoriteButton, "MAKE A FAVORITE", android.R.color.holo_red_light);
         }
     }
 
@@ -87,12 +87,12 @@ public class BookDetailActivity extends AppCompatActivity {
     }
 
     private void setBuyButtonState(String buyLink, Button buyButton) {
-        if ("Indisponivel".equals(buyLink.trim())) {
+        if ("Unavailable".equals(buyLink.trim())) {
             buyButton.setVisibility(View.VISIBLE);
             buyButton.setEnabled(false);
             buyButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(android.R.color.darker_gray)));
             buyButton.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
-            buyButton.setText("Indisponível");
+            buyButton.setText("Unavailable");
         } else if (buyLink != null && !buyLink.isEmpty()) {
             buyButton.setVisibility(View.VISIBLE);
             buyButton.setOnClickListener(view -> openBuyLink(buyLink));
@@ -106,7 +106,7 @@ public class BookDetailActivity extends AppCompatActivity {
         if (browserIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(browserIntent);
         } else {
-            showToast("Nenhum navegador disponível");
+            showToast("No browser available");
         }
     }
 

@@ -14,7 +14,7 @@
 #include "curl/curl.h"
 #include "json/json.h"  // Certifique-se de que o caminho está correto
 
-#define TAG "HTTP"
+#define TAG "HTTPS"
 
 using namespace std::string_literals;
 
@@ -24,12 +24,12 @@ namespace {
         size_t totalSize = size * nmemb;
         std::string* buffer = static_cast<std::string*>(userp);
 
-        // Verifica se o buffer está vazio ou se o último caractere não é uma aspas dupla
+        // Checks if the buffer is empty or if the last character is not a double quote
         if (buffer->empty() || buffer->back() != '"') {
             buffer->append(static_cast<char*>(contents), totalSize);
         } else {
-            // Se o buffer terminou com uma aspas dupla, significa que a descrição está sendo cortada
-            // Nesse caso, adicionamos uma aspas simples no início para continuar a leitura da descrição
+        // If the buffer ended with a double quote, it means the description is being trimmed
+            // In this case, we add a single quote at the beginning to continue reading the description
             buffer->pop_back();  // Remove a última aspas dupla
             buffer->push_back('\'');  // Adiciona uma aspas simples
             buffer->append(static_cast<char*>(contents), totalSize);
@@ -38,7 +38,7 @@ namespace {
         return totalSize;
     }
 
-// Divide a string em partes menores e imprime no logcat
+    // Split the string into smaller parts and print to logcat
     void printToLogcat(const std::string& buffer) {
         //__android_log_print(ANDROID_LOG_VERBOSE, TAG, "printToLogcat tamanho %d",buffer.length());
 
@@ -59,12 +59,12 @@ namespace {
 
         // Parse JSON
         if (Json::parseFromStream(builder, jsonStream, &root, nullptr)) {
-            // Verifica se o objeto JSON contém a chave "items"
+            // Checks if the JSON object contains the "items" key
             if (root.isMember("items")) {
                 // Obtém o array de livros
                 const auto& items = root["items"];
 
-                // Itera sobre os livros no array
+                // Iterates over the books in the array
                 for (const auto& item : items) {
                     Book book;
                     book.id = item["id"].asString();
@@ -91,11 +91,11 @@ namespace {
                         book.buyLink = item["saleInfo"]["buyLink"].asString();
                         __android_log_print(ANDROID_LOG_VERBOSE, TAG, "XXXX BuyLink: %s", book.buyLink.c_str());
                     } else {
-                        book.buyLink = "Indisponivel";
-                        __android_log_print(ANDROID_LOG_VERBOSE, TAG, "XXXX BuyLink indisponivel");
+                        book.buyLink = "Unavailable";
+                        __android_log_print(ANDROID_LOG_VERBOSE, TAG, "XXXX BuyLink unavailable");
                     }
 
-                    // Adiciona o livro ao vetor
+                    // Add the book to the vector
                     books.push_back(book);
                 }
             }
@@ -133,7 +133,6 @@ namespace curlssl {
                 curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
                 curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
 
-                // Configurações adicionais para suportar HTTPS
                 curl_easy_setopt(curl, CURLOPT_CAINFO, androidCacertPath.c_str());
                 curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
 
@@ -143,9 +142,8 @@ namespace curlssl {
                 if (res == CURLE_OK) {
                     __android_log_print(ANDROID_LOG_VERBOSE, TAG, "res == CURLE_OK");
 
-                    // Imprimir ou processar os dados recebidos conforme necessário
 
-                    // Salvar a resposta em um arquivo temporário
+                    // Save the response to a temporary file
                     FILE* file = fopen("/data/data/com.example.bookStore/cache/response.txt", "w");
                     if (file) {
                         fprintf(file, "%s", readBuffer.c_str());
@@ -154,14 +152,14 @@ namespace curlssl {
                         __android_log_print(ANDROID_LOG_ERROR, TAG, "Error opening file for writing");
                     }
 
-                    // Analisa o JSON e obtém informações sobre os livros
+                    // Parse JSON and get information about books
                     std::vector<Book> books = parseBooksFromJson(readBuffer);
                     __android_log_print(ANDROID_LOG_VERBOSE, TAG, "books");
                     printToLogcat(readBuffer);
                     return books;
                 } else {
                     __android_log_print(ANDROID_LOG_VERBOSE, TAG, "res == %d, error: %s", res, curl_easy_strerror(res));
-                    // Tratar erro, se necessário
+                    // Handle error if necessary
                     return {};
                 }
             }

@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/detailDescription"
         android:layout_marginTop="16dp"
-        android:text="Favoritar"
+        android:text="Favorite"
         android:backgroundTint="@android:color/holo_red_light"
     />
 

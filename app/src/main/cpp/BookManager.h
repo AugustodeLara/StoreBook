@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include <set>
-#include "Book.h"  // Certifique-se de incluir o cabeçalho do Book
+#include "Book.h"
 
 class BookManager {
 public:

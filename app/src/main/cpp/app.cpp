@@ -10,17 +10,16 @@
 #include <algorithm>
 #include <set>
 
-
 #define TAG "app"
 
 namespace curlssl {
 
     std::vector<Book> getGoogleBooksData() {
-        // URL da API do Google Books
+        // Google Books API URL
 
         __android_log_print(ANDROID_LOG_VERBOSE, TAG, "getGoogleBooksData %s", "");
 
-        // Certifique-se de substituir "YOUR_CACERT_PATH" pelo caminho real para o seu arquivo cacert.pem
+        // Make sure to replace "YOUR_CACERT_PATH" with the actual path to your cacert.pem file
         http::Client client(
                 "/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/assets/cacert.pem");
         std::string url = "https://www.googleapis.com/books/v1/volumes?q=android&maxResults=14&startIndex=0&projection=lite";
@@ -31,11 +30,11 @@ namespace curlssl {
             for (auto &book: books) {
                 if (book.description.length() > 200) {
                     book.description = book.description.substr(0, 200) +
-                                       " ...";  // Adiciona "..." para indicar que foi truncado
+                                       " ...";  // Add "..." to indicate truncation
                 }
             }
 
-            // Exibir informações para cada livro no log
+            // Log information for each book
             for (const auto &book: books) {
                 __android_log_print(ANDROID_LOG_VERBOSE, TAG, "cURL Request Executed %s",
                                     book.id.c_str());
@@ -54,18 +53,17 @@ namespace curlssl {
 
             return books;
         } else {
-            return {};  // Retorna um vetor vazio se não houver livros
+            return {};  // Return an empty vector if there are no books
         }
     }
 
-
     extern "C" JNIEXPORT jobjectArray JNICALL
     Java_com_example_bookStore_ui_main_MainActivity_getApiGoogleBook(JNIEnv *env,
-                                                             jobject /* this */,
-                                                             jstring cacert_java) {
+                                                                     jobject /* this */,
+                                                                     jstring cacert_java) {
         const char *cacert = env->GetStringUTFChars(cacert_java, nullptr);
 
-        // Chamar a nova função para a API do Google Books
+        // Call the new function for the Google Books API
         auto books = curlssl::getGoogleBooksData();
 
         for (auto &book: books) {
@@ -78,41 +76,39 @@ namespace curlssl {
             __android_log_print(ANDROID_LOG_VERBOSE, TAG, "getApiGoogleBook image: %s",
                                 book.smallThumbnail.c_str());
 
-            // Criar uma instância da classe BookManager
+            // Create an instance of the BookManager class
             BookManager bookManager;
 
             __android_log_print(ANDROID_LOG_VERBOSE, TAG, "XXXX - getApiGoogleBook book.id: %s",
                                 book.id.c_str());
 
-
-            // Chamar a função para verificar se o ID está presente no CSV
+            // Call the function to check if the ID is present in the CSV
             bool isIDPresent = bookManager.checkIDinCSV(book.id);
 
             if (isIDPresent) {
-                __android_log_print(ANDROID_LOG_VERBOSE, TAG, "getApiGoogleBook FAVORITO: %d", 0);
+                __android_log_print(ANDROID_LOG_VERBOSE, TAG, "getApiGoogleBook FAVORITE: %d", 0);
             } else {
-                // O ID não está presente no arquivo CSV
-                __android_log_print(ANDROID_LOG_VERBOSE, TAG, "getApiGoogleBook FAVORITO: %d", 1);
+                // The ID is not present in the CSV file
+                __android_log_print(ANDROID_LOG_VERBOSE, TAG, "getApiGoogleBook FAVORITE: %d", 1);
             }
 
-            // Atualizar a informação de favorito no objeto book
+            // Update the favorite information in the book object
             book.favorite = isIDPresent;
-
         }
 
         size_t size = books.size();
-        __android_log_print(ANDROID_LOG_VERBOSE, TAG, "getApiGoogleBook tamanho %zu", size);
+        __android_log_print(ANDROID_LOG_VERBOSE, TAG, "getApiGoogleBook size %zu", size);
 
         env->ReleaseStringUTFChars(cacert_java, cacert);
 
-        // Verificar se há livros retornados
+        // Check if there are returned books
         if (!books.empty()) {
-            // Criar um array de objetos String em Java
+            // Create an array of Java String objects
             jobjectArray result = env->NewObjectArray(size * 6, env->FindClass("java/lang/String"),
                                                       env->NewStringUTF(""));
 
             int index = 0;
-            // Preencher o array com os valores de cada livro
+            // Fill the array with the values of each book
             for (const auto &book: books) {
                 env->SetObjectArrayElement(result, index++,
                                            env->NewStringUTF((book.id + "**").c_str()));
@@ -130,11 +126,11 @@ namespace curlssl {
                                            env->NewStringUTF((book.buyLink + "**").c_str()));
             }
 
-            // Iterar sobre os elementos do array e imprimir cada string individualmente
+            // Iterate over the elements of the array and print each string individually
             for (size_t i = 0; i < size * 6; ++i) {
                 jstring str = (jstring) env->GetObjectArrayElement(result, i);
                 const char *utfChars = env->GetStringUTFChars(str, nullptr);
-                __android_log_print(ANDROID_LOG_VERBOSE, TAG, "Iterar: %s", utfChars);
+                __android_log_print(ANDROID_LOG_VERBOSE, TAG, "Iterate: %s", utfChars);
                 env->ReleaseStringUTFChars(str, utfChars);
                 env->DeleteLocalRef(str);
             }
@@ -147,24 +143,24 @@ namespace curlssl {
 
     extern "C" JNIEXPORT void JNICALL
     Java_com_example_bookStore_ui_main_BookDetailActivity_favoriteBook(JNIEnv *env, jobject /* this */,
-                                                               jstring jId, jstring jTitle,
-                                                               jstring jDescription,
-                                                               jstring jThumbnail) {
+                                                                       jstring jId, jstring jTitle,
+                                                                       jstring jDescription,
+                                                                       jstring jThumbnail) {
         const char *id = env->GetStringUTFChars(jId, nullptr);
         const char *title = env->GetStringUTFChars(jTitle, nullptr);
         const char *description = env->GetStringUTFChars(jDescription, nullptr);
         const char *thumbnail = env->GetStringUTFChars(jThumbnail, nullptr);
 
-        // Criar um objeto Book com os detalhes do livro favoritado
-        Book favoriteBook(id, title, description, thumbnail, true, ""); //TODO: Adicionar BuyLink
+        // Create a Book object with the details of the favorited book
+        Book favoriteBook(id, title, description, thumbnail, true, ""); //TODO: Add BuyLink
 
-        // Criar uma instância da classe BookManager
+        // Create an instance of the BookManager class
         BookManager bookManager;
 
-        // Chamar a função para salvar o livro no arquivo CSV
+        // Call the function to save the book to the CSV file
         bookManager.saveBookToCSV(favoriteBook);
 
-        // Liberar recursos
+        // Release resources
         env->ReleaseStringUTFChars(jId, id);
         env->ReleaseStringUTFChars(jTitle, title);
         env->ReleaseStringUTFChars(jDescription, description);
@@ -173,21 +169,21 @@ namespace curlssl {
 
     extern "C" JNIEXPORT bool JNICALL
     Java_com_example_bookStore_ui_main_BookDetailActivity_unfollowBook(JNIEnv *env, jobject /* this */,
-                                                               jstring jId) {
+                                                                       jstring jId) {
         const char *id = env->GetStringUTFChars(jId, nullptr);
-        // Criar uma instância da classe BookManager
+        // Create an instance of the BookManager class
         BookManager bookManager;
-        // Verificar se o livro está presente no arquivo CSV
+        // Check if the book is present in the CSV file
         if (bookManager.checkIDinCSV(id)) {
-            // Abrir o arquivo CSV original para leitura
+            // Open the original CSV file for reading
             std::ifstream csvReadFile(bookManager.csvFilePath);
-            // Criar um novo arquivo CSV temporário para armazenar os livros que não devem ser removidos
+            // Create a new temporary CSV file to store the books that should not be removed
             std::ofstream tempCsvWriteFile("/sdcard/Download/favorite_books_temp.csv",
                                            std::ios::app);
             if (csvReadFile.is_open() && tempCsvWriteFile.is_open()) {
                 std::string line;
                 while (std::getline(csvReadFile, line)) {
-                    // Extrai a ID da linha
+                    // Extract the ID from the line
                     std::istringstream iss(line);
                     std::string currentId;
                     if (std::getline(iss, currentId, ',')) {
@@ -201,28 +197,28 @@ namespace curlssl {
                                             id);
 
 
-                        // Se a ID não corresponder à ID do livro a ser removido, escreva a linha no novo arquivo
+                        // If the ID does not match the ID of the book to be removed, write the line to the new file
                         if (currentId != id) {
                             tempCsvWriteFile << line << "\n";
                         }
                     }
                 }
-                // Fechar os arquivos
+                // Close the files
                 csvReadFile.close();
                 tempCsvWriteFile.close();
-                // Substituir o arquivo original pelo temporário
+                // Replace the original file with the temporary one
                 std::rename("/sdcard/Download/favorite_books_temp.csv",
                             bookManager.csvFilePath.c_str());
-                // Liberar recursos
+                // Release resources
                 env->ReleaseStringUTFChars(jId, id);
                 return true;
             } else {
-                // Se houver erro ao abrir os arquivos, retornar false
+                // If there is an error opening the files, return false
                 env->ReleaseStringUTFChars(jId, id);
                 return false;
             }
         } else {
-            // Se a ID não estiver presente no arquivo CSV, retornar false
+            // If the ID is not present in the CSV file, return false
             env->ReleaseStringUTFChars(jId, id);
             return false;
         }
@@ -231,21 +227,21 @@ namespace curlssl {
     extern "C"
     JNIEXPORT jobjectArray JNICALL
     Java_com_example_bookStore_ui_favorites_FavoritesActivity_getFavoritesSaved(JNIEnv *env, jobject thiz) {
-        // Criar uma instância da classe BookManager
+        // Create an instance of the BookManager class
         BookManager bookManager;
 
-        // Obter a lista de livros favoritos do arquivo CSV
+        // Get the list of favorite books from the CSV file
         auto favoriteBooks = bookManager.getFavoriteBooksFromCSV();
 
-        // Verificar se há livros retornados
+        // Check if there are returned books
         if (!favoriteBooks.empty()) {
-            // Obter a classe Java para a classe String
+            // Get the Java class for the String class
             jclass stringClass = env->FindClass("java/lang/String");
 
-            // Criar um array de objetos Java String
+            // Create an array of Java String objects
             jobjectArray result = env->NewObjectArray(favoriteBooks.size(), stringClass, nullptr);
 
-            // Preencher o array com os valores de cada livro
+            // Fill the array with the values of each book
             for (size_t i = 0; i < favoriteBooks.size(); ++i) {
                 const Book &book = favoriteBooks[i];
                 std::string bookString = book.id + "**" +
@@ -253,22 +249,22 @@ namespace curlssl {
                                          book.description + "**" +
                                          book.smallThumbnail + "**";
 
-                // Verificar se o objeto jstring não é nulo
+                // Check if the jstring object is not null
                 jstring jBookString = env->NewStringUTF(bookString.c_str());
                 if (jBookString != nullptr) {
-                    // Definir o objeto na posição i do array
+                    // Set the object at position i in the array
                     env->SetObjectArrayElement(result, i, jBookString);
 
-                    // Liberar a referência local
+                    // Release the local reference
                     env->DeleteLocalRef(jBookString);
                 } else {
-                    // Lida com a situação de erro, se necessário
+                    // Handle error situation if needed
                     __android_log_print(ANDROID_LOG_ERROR, TAG,
-                                        "Erro ao criar jstring para o livro %zu", i);
+                                        "Error creating jstring for book %zu", i);
                 }
             }
 
-            // Liberar a referência local da classe String
+            // Release the local reference of the String class
             env->DeleteLocalRef(stringClass);
 
             return result;
@@ -279,32 +275,28 @@ namespace curlssl {
 
     extern "C" JNIEXPORT bool JNICALL
     Java_com_example_bookStore_ui_main_BookDetailActivity_isFavorite(JNIEnv *env, jobject /* this */,
-                                                             jstring jId) {
+                                                                     jstring jId) {
         const char *id = env->GetStringUTFChars(jId, nullptr);
         BookManager bookManager;
         __android_log_print(ANDROID_LOG_VERBOSE, TAG, "XXXX - isFavorite: %s", id);
 
-        // Chamar a função para verificar se o ID está presente no CSV
+        // Call the function to check if the ID is present in the CSV file
         bool isIDPresent = bookManager.checkIDinCSV(id);
-
 
         return isIDPresent;
     }
-
 
     extern "C" JNIEXPORT bool JNICALL
     Java_com_example_bookStore_ui_main_MainActivity_hasSavedBook(JNIEnv *env, jobject /* this */) {
         BookManager bookManager;
         __android_log_print(ANDROID_LOG_VERBOSE, TAG, "XXXX hasSavedBoo");
 
-        // Chamar a função para verificar se o ID está presente no CSV
+        // Call the function to check if there are elements in the CSV file
         bool saved = bookManager.checkElementsCSV();
 
         __android_log_print(ANDROID_LOG_VERBOSE, TAG, "XXXX hasSavedBoo %d", saved);
 
-
         return saved;
     }
-
 
 }  // namespace curlssl

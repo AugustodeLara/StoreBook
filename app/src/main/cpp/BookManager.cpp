@@ -4,179 +4,180 @@
 #include <sstream>
 #include <algorithm>
 #include <android/log.h>
-#include "logging.h"  // Certifique-se de incluir o cabeçalho para logging
+#include "logging.h"  // Make sure to include the header for logging
 
 #define TAG "app"
 
 BookManager::BookManager() {
-    // Caminho para o arquivo CSV interno no dispositivo
+    // Path to the internal CSV file on the device
     csvFilePath = "/sdcard/Download/favorite_books.csv";
 }
 
 void BookManager::saveBookToCSV(const Book& book) {
-    // Abre o arquivo CSV para leitura
+    // Open the CSV file for reading
     std::ifstream csvReadFile(csvFilePath);
-    std::set<std::string> existingIds; // Usando um set para armazenar IDs únicos
+    std::set<std::string> existingIds; // Using a set to store unique IDs
     if (csvReadFile.is_open()) {
         std::string line;
         while (std::getline(csvReadFile, line)) {
-            // Extrai a ID da linha
+            // Extract the ID from the line
             std::istringstream iss(line);
             std::string currentId;
             if (std::getline(iss, currentId, ',')) {
                 currentId.erase(std::remove(currentId.begin(), currentId.end(), '|'), currentId.end());
 
-                // Exibe a ID
-                __android_log_print(ANDROID_LOG_VERBOSE, TAG, "ID existente no CSV: %s", currentId.c_str());
-                // Adiciona a ID ao conjunto
+                // Display the ID
+                __android_log_print(ANDROID_LOG_VERBOSE, TAG, "Existing ID in CSV: %s", currentId.c_str());
+                // Add the ID to the set
                 existingIds.insert(currentId);
             }
         }
-        // Fecha o arquivo de leitura
+        // Close the reading file
         csvReadFile.close();
     } else {
-        __android_log_print(ANDROID_LOG_ERROR, TAG, "Erro ao abrir o arquivo CSV para leitura");
+        __android_log_print(ANDROID_LOG_ERROR, TAG, "Error opening CSV file for reading");
     }
-    // Verifica se a ID já existe no conjunto
-
+    // Check if the ID already exists in the set
     __android_log_print(ANDROID_LOG_VERBOSE, TAG, "XXXXXX saveBookToCSV ID=  %s", book.id.c_str());
 
     if (existingIds.find(book.id) != existingIds.end()) {
-        // A ID já existe, não é necessário adicionar novamente
-        __android_log_print(ANDROID_LOG_VERBOSE, TAG, "Livro com ID %s já existe no CSV", book.id.c_str());
+        // The ID already exists, no need to add it again
+        __android_log_print(ANDROID_LOG_VERBOSE, TAG, "Book with ID %s already exists in CSV", book.id.c_str());
         return;
     }
-    // Abre o arquivo CSV para adicionar novos dados
+    // Open the CSV file to add new data
     std::ofstream csvWriteFile(csvFilePath, std::ios::app);
     if (csvWriteFile.is_open()) {
-        // Verifica se a ID já existe no conjunto
+        // Check if the ID already exists in the set
         if (existingIds.find(book.id) != existingIds.end()) {
-            // A ID já existe, não é necessário adicionar novamente
-            __android_log_print(ANDROID_LOG_VERBOSE, TAG, "Livro com ID %s já existe no CSV", book.id.c_str());
+            // The ID already exists, no need to add it again
+            __android_log_print(ANDROID_LOG_VERBOSE, TAG, "Book with ID %s already exists in CSV", book.id.c_str());
         } else{
-            __android_log_print(ANDROID_LOG_VERBOSE, TAG, "Livro novo %s no CSV", book.id.c_str());
+            __android_log_print(ANDROID_LOG_VERBOSE, TAG, "New book %s in CSV", book.id.c_str());
             csvWriteFile << book.id + "|" << "," << book.title + "|" << "," << book.description  + "|" << "," << book.smallThumbnail << + "|" "\n";
         }
-        // Fecha o arquivo
+        // Close the file
         csvWriteFile.close();
     } else {
-        __android_log_print(ANDROID_LOG_ERROR, TAG, "Erro ao abrir o arquivo CSV para escrita");
+        __android_log_print(ANDROID_LOG_ERROR, TAG, "Error opening CSV file for writing");
     }
 }
 
 std::vector<Book> BookManager::getFavoriteBooksFromCSV() {
     std::vector<Book> favoriteBooks;
 
-    // Abre o arquivo CSV para leitura
+    // Open the CSV file for reading
     std::ifstream csvReadFile(csvFilePath);
 
     if (csvReadFile.is_open()) {
         std::string line;
         while (std::getline(csvReadFile, line)) {
-            // Encontrar as posições dos pipes (|)
+            // Find the positions of pipes (|)
             size_t idPos = 0;
             size_t titlePos = line.find('|', idPos);
             size_t descriptionPos = line.find('|', titlePos + 1);
             size_t imagePos = line.find('|', descriptionPos + 1);
 
-            // Verificar se as posições são válidas
+            // Check if the positions are valid
             if (titlePos != std::string::npos && descriptionPos != std::string::npos && imagePos != std::string::npos) {
-                // Extrair os detalhes do livro da linha
+                // Extract the book details from the line
                 std::string id = line.substr(idPos, titlePos - idPos);
                 std::string title = line.substr(titlePos + 1, descriptionPos - titlePos - 1);
                 std::string description = line.substr(descriptionPos + 1, imagePos - descriptionPos - 1);
                 std::string image = line.substr(imagePos + 1);
 
-                // Remover vírgulas indesejadas
+                // Remove unwanted commas
                 title.erase(std::remove(title.begin(), title.end(), ','), title.end());
                 description.erase(std::remove(description.begin(), description.end(), ','), description.end());
                 image.erase(std::remove(image.begin(), image.end(), ','), image.end());
 
-                // Remover caractere "|" no final da imagem
+                // Remove "|" character at the end of the image
                 if (!image.empty() && image[image.length() - 1] == '|') {
                     image.pop_back();
                 }
 
-                // Crie uma instância de Book com um construtor adequado e adicione à lista de favoritos
-                Book bk(id.c_str(), title.c_str(), description.c_str(), image.c_str());
-                favoriteBooks.push_back(bk);
-
-                // Log para verificar
+                // Log to verify
                 __android_log_print(ANDROID_LOG_VERBOSE, TAG, "XXXXX getFavoriteBooksFromCSV %s", id.c_str());
                 __android_log_print(ANDROID_LOG_VERBOSE, TAG, "XXXXX getFavoriteBooksFromCSV %s", title.c_str());
                 __android_log_print(ANDROID_LOG_VERBOSE, TAG, "XXXXX getFavoriteBooksFromCSV %s", description.c_str());
                 __android_log_print(ANDROID_LOG_VERBOSE, TAG, "XXXXX getFavoriteBooksFromCSV %s", image.c_str());
+
+                // Create a Book instance with a suitable constructor and add it to the favorites list
+                Book bk(id.c_str(), title.c_str(), description.c_str(), image.c_str());
+                favoriteBooks.push_back(bk);
+
+
             }
         }
 
-        // Fechar o arquivo de leitura
+        // Close the reading file
         csvReadFile.close();
     } else {
-        __android_log_print(ANDROID_LOG_ERROR, TAG, "Erro ao abrir o arquivo CSV para leitura");
+        __android_log_print(ANDROID_LOG_ERROR, TAG, "Error opening CSV file for reading");
     }
 
     return favoriteBooks;
 }
 
 bool BookManager::checkIDinCSV(std::string id) {
-    // Abre o arquivo CSV para leitura
+    // Open the CSV file for reading
     std::ifstream csvReadFile(csvFilePath);
-    std::set<std::string> existingIds; // Usando um set para armazenar IDs únicos
+    std::set<std::string> existingIds; // Using a set to store unique IDs
     if (csvReadFile.is_open()) {
         std::string line;
         while (std::getline(csvReadFile, line)) {
-            // Extrai a ID da linha
+            // Extract the ID from the line
             std::istringstream iss(line);
             std::string currentId;
             if (std::getline(iss, currentId, ',')) {
 
                 currentId.erase(std::remove(currentId.begin(), currentId.end(), '|'), currentId.end());
 
-                // Exibe a ID
-                __android_log_print(ANDROID_LOG_VERBOSE, TAG, "ID existente no CSV: %s", currentId.c_str());
-                // Adiciona a ID ao conjunto
+                // Display the ID
+                __android_log_print(ANDROID_LOG_VERBOSE, TAG, "Existing ID in CSV: %s", currentId.c_str());
+                // Add the ID to the set
                 existingIds.insert(currentId);
             }
         }
-        // Fecha o arquivo de leitura
+        // Close the reading file
         csvReadFile.close();
     } else {
-        __android_log_print(ANDROID_LOG_ERROR, TAG, "Erro ao abrir o arquivo CSV para leitura");
-        return false; // Se houver erro ao abrir o arquivo, consideramos como ID não existente
+        __android_log_print(ANDROID_LOG_ERROR, TAG, "Error opening CSV file for reading");
+        return false; // If there is an error opening the file, consider it as a non-existing ID
     }
-    // Verifica se a ID já existe no conjunto
+    // Check if the ID already exists in the set
     return existingIds.find(id) != existingIds.end();
 }
 
 bool BookManager::checkElementsCSV() {
-    // Abre o arquivo CSV para leitura
+    // Open the CSV file for reading
     std::ifstream csvReadFile(csvFilePath);
-    std::set<std::string> existingIds; // Usando um set para armazenar IDs únicos
+    std::set<std::string> existingIds; // Using a set to store unique IDs
     if (csvReadFile.is_open()) {
         std::string line;
         while (std::getline(csvReadFile, line)) {
-            // Extrai a ID da linha
+            // Extract the ID from the line
             std::istringstream iss(line);
             std::string currentId;
             if (std::getline(iss, currentId, ',')) {
 
                 currentId.erase(std::remove(currentId.begin(), currentId.end(), '|'), currentId.end());
-                // Exibe a ID
-                __android_log_print(ANDROID_LOG_VERBOSE, TAG, "checkElementsCSV ID existente no CSV: %s", currentId.c_str());
+                // Display the ID
+                __android_log_print(ANDROID_LOG_VERBOSE, TAG, "checkElementsCSV Existing ID in CSV: %s", currentId.c_str());
                 if (!currentId.empty()) {
-                    // Se pelo menos um ID não estiver vazio, retornar true
+                    // If at least one non-empty ID is found, return true
                     csvReadFile.close();
                     return true;
                 }
             }
         }
-        // Fecha o arquivo de leitura
+        // Close the reading file
         csvReadFile.close();
     } else {
-        __android_log_print(ANDROID_LOG_ERROR, TAG, "Erro ao abrir o arquivo CSV para leitura");
-        return false; // Se houver erro ao abrir o arquivo, consideramos como ID não existente
+        __android_log_print(ANDROID_LOG_ERROR, TAG, "Error opening CSV file for reading");
+        return false; // If there is an error opening the file, consider it as a non-existing ID
     }
 
-    // Se nenhum ID não vazio foi encontrado, retornar false
+    // If no non-empty ID was found, return false
     return false;
 }
