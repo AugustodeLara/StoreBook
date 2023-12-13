@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.curlssl.R
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         cacert = cacheCacertFile()
 
         recyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = GridLayoutManager(this, 2) // Definindo o GridLayoutManager com 2 colunas
 
         // Adicione logs para verificar o que está sendo retornado por getApiGoogleBook
         val apiGoogleBookResult = getApiGoogleBook(cacert)

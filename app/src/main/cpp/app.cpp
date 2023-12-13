@@ -1,7 +1,7 @@
 #include <jni.h>
 #include <fstream>
 #include <android/log.h>
-#include "http.h"
+#include "https.h"
 #include "java_interop.h"
 #include "json/json.h"
 #include "logging.h"
@@ -145,9 +145,10 @@ namespace curlssl {
         __android_log_print(ANDROID_LOG_VERBOSE, TAG, "getGoogleBooksData %s", "");
 
         // Certifique-se de substituir "YOUR_CACERT_PATH" pelo caminho real para o seu arquivo cacert.pem
-        http::Client client("/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/src/main/assets/cacert.pem");
+        http::Client client("/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/assets/cacert.pem");
+        std::string url = "https://www.googleapis.com/books/v1/volumes?q=android&maxResults=14&startIndex=0&projection=lite";
 
-        auto books = client.getHttps();
+        auto books = client.getHttps(url);
 
         if (!books.empty()) {
             for (auto& book : books) {

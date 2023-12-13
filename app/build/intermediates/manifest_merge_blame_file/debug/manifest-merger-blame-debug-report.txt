@@ -1,0 +1,111 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.bookStore"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:5:5-67
+11-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+12-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:6:5-80
+12-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:6:22-77
+13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+13-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:7:5-81
+13-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:7:22-78
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+14-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:7:5-81
+14-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:7:22-78
+15
+16    <application
+16-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:10:5-36:19
+17        android:allowBackup="true"
+17-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:11:9-35
+18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+18-->[androidx.core:core:1.8.0] /home/aglara/.gradle/caches/transforms-3/9805343650087d652836f13906f121cc/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+19        android:debuggable="true"
+20        android:icon="@mipmap/ic_launcher"
+20-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:12:9-43
+21        android:label="@string/app_name"
+21-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:13:9-41
+22        android:roundIcon="@mipmap/ic_launcher_round"
+22-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:14:9-54
+23        android:supportsRtl="true"
+23-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:15:9-35
+24        android:testOnly="true"
+25        android:theme="@style/AppTheme" >
+25-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:16:9-40
+26        <activity
+26-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:18:9-24:20
+27            android:name="com.example.bookStore.MainActivity"
+27-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:18:19-68
+28            android:exported="true" >
+28-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:19:13-36
+29            <intent-filter>
+29-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:20:13-23:29
+30                <action android:name="android.intent.action.MAIN" />
+30-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:21:17-69
+30-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:21:25-66
+31
+32                <category android:name="android.intent.category.LAUNCHER" />
+32-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:22:17-77
+32-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:22:27-74
+33            </intent-filter>
+34        </activity>
+35        <activity
+35-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:26:9-33:20
+36            android:name="com.example.bookStore.BookDetailActivity"
+36-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:27:13-68
+37            android:label="@string/title_activity_book_detail"
+37-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:28:13-63
+38            android:parentActivityName="com.example.bookStore.MainActivity" >
+38-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:29:13-76
+39            <meta-data
+39-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:30:13-32:70
+40                android:name="android.support.PARENT_ACTIVITY"
+40-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:31:17-63
+41                android:value="com.example.bookStore.MainActivity" />
+41-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:32:17-67
+42        </activity>
+43        <activity android:name="com.example.bookStore.FavoritesActivity" />
+43-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:35:9-76
+43-->/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/AndroidManifest.xml:35:19-73
+44
+45        <provider
+45-->[com.squareup.picasso:picasso:2.8] /home/aglara/.gradle/caches/transforms-3/a448ebf5fcd062a3d8f89b79718cd313/transformed/jetified-picasso-2.8/AndroidManifest.xml:8:9-11:40
+46            android:name="com.squareup.picasso.PicassoProvider"
+46-->[com.squareup.picasso:picasso:2.8] /home/aglara/.gradle/caches/transforms-3/a448ebf5fcd062a3d8f89b79718cd313/transformed/jetified-picasso-2.8/AndroidManifest.xml:9:13-64
+47            android:authorities="com.example.bookStore.com.squareup.picasso"
+47-->[com.squareup.picasso:picasso:2.8] /home/aglara/.gradle/caches/transforms-3/a448ebf5fcd062a3d8f89b79718cd313/transformed/jetified-picasso-2.8/AndroidManifest.xml:10:13-72
+48            android:exported="false" />
+48-->[com.squareup.picasso:picasso:2.8] /home/aglara/.gradle/caches/transforms-3/a448ebf5fcd062a3d8f89b79718cd313/transformed/jetified-picasso-2.8/AndroidManifest.xml:11:13-37
+49        <provider
+49-->[androidx.emoji2:emoji2:1.2.0] /home/aglara/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+50            android:name="androidx.startup.InitializationProvider"
+50-->[androidx.emoji2:emoji2:1.2.0] /home/aglara/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+51            android:authorities="com.example.bookStore.androidx-startup"
+51-->[androidx.emoji2:emoji2:1.2.0] /home/aglara/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+52            android:exported="false" >
+52-->[androidx.emoji2:emoji2:1.2.0] /home/aglara/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+53            <meta-data
+53-->[androidx.emoji2:emoji2:1.2.0] /home/aglara/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+54                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+54-->[androidx.emoji2:emoji2:1.2.0] /home/aglara/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+55                android:value="androidx.startup" />
+55-->[androidx.emoji2:emoji2:1.2.0] /home/aglara/.gradle/caches/transforms-3/5b003430b8b4f35f37f7211657d2d33a/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+56            <meta-data
+56-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/aglara/.gradle/caches/transforms-3/15357bcd2e4cb9d7199bc503c46651e3/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+57                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+57-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/aglara/.gradle/caches/transforms-3/15357bcd2e4cb9d7199bc503c46651e3/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+58                android:value="androidx.startup" />
+58-->[androidx.lifecycle:lifecycle-process:2.4.1] /home/aglara/.gradle/caches/transforms-3/15357bcd2e4cb9d7199bc503c46651e3/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+59        </provider>
+60    </application>
+61
+62</manifest>

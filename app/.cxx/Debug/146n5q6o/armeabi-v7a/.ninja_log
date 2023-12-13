@@ -1,0 +1,14 @@
+# ninja log v5
+16	141	1702429468	CMakeFiles/app.dir/logging.cpp.o	180dcd41d317813e
+29	527	1702429468	CMakeFiles/app.dir/Book.cpp.o	276f51ff22d6cb5d
+0	1206	1702429469	CMakeFiles/app.dir/http.cpp.o	9a9e3317f6826d07
+0	1496	1702429469	CMakeFiles/app.dir/app.cpp.o	77498a606d6f08e3
+1496	1585	1702429469	/home/aglara/AndroidStudioProjects/lojaLivros/app/build/intermediates/cxx/Debug/146n5q6o/obj/armeabi-v7a/libapp.so	aacb8d3c799bac30
+1	953	1702429615	CMakeFiles/app.dir/https.cpp.o	5babba445debfc6f
+1	1263	1702429616	CMakeFiles/app.dir/app.cpp.o	77498a606d6f08e3
+1263	1304	1702429616	/home/aglara/AndroidStudioProjects/lojaLivros/app/build/intermediates/cxx/Debug/146n5q6o/obj/armeabi-v7a/libapp.so	9849207c07e92f8e
+3	937	1702432516	CMakeFiles/app.dir/https.cpp.o	5babba445debfc6f
+937	984	1702432516	/home/aglara/AndroidStudioProjects/lojaLivros/app/build/intermediates/cxx/Debug/146n5q6o/obj/armeabi-v7a/libapp.so	9849207c07e92f8e
+1	901	1702433448	CMakeFiles/app.dir/https.cpp.o	5babba445debfc6f
+1	1192	1702433449	CMakeFiles/app.dir/app.cpp.o	77498a606d6f08e3
+1192	1241	1702433449	/home/aglara/AndroidStudioProjects/lojaLivros/app/build/intermediates/cxx/Debug/146n5q6o/obj/armeabi-v7a/libapp.so	9849207c07e92f8e

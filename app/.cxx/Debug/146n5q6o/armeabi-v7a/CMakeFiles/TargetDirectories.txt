@@ -1,0 +1,3 @@
+/home/aglara/AndroidStudioProjects/lojaLivros/app/.cxx/Debug/146n5q6o/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/home/aglara/AndroidStudioProjects/lojaLivros/app/.cxx/Debug/146n5q6o/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/aglara/AndroidStudioProjects/lojaLivros/app/.cxx/Debug/146n5q6o/armeabi-v7a/CMakeFiles/app.dir

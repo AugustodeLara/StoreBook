@@ -1,0 +1,4 @@
+/home/aglara/Android/Sdk/cmake/3.18.1/bin/ninja \
+  -C \
+  /home/aglara/AndroidStudioProjects/lojaLivros/app/.cxx/Debug/146n5q6o/x86_64 \
+  app

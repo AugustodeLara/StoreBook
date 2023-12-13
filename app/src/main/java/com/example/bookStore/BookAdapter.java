@@ -38,7 +38,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         books.add(thumbnailUrl);
 
         // Notifique o adaptador sobre a adição de um novo item
-        notifyItemInserted(books.size() / 4 );
+        notifyItemInserted(books.size() / 4);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
