@@ -1,0 +1,13 @@
+# ninja log v5
+1	79	1702255617	CMakeFiles/app.dir/logging.cpp.o	cff0d69751ea6ee7
+1	876	1702255617	CMakeFiles/app.dir/http.cpp.o	e01caea1bd077b61
+0	913	1702255617	CMakeFiles/app.dir/app.cpp.o	19e87317d505bc9f
+913	949	1702255617	/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/x86/libapp.so	280c3d177a75155e
+1	856	1702255778	CMakeFiles/app.dir/http.cpp.o	e01caea1bd077b61
+856	892	1702255779	/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/x86/libapp.so	280c3d177a75155e
+1	886	1702255894	CMakeFiles/app.dir/http.cpp.o	e01caea1bd077b61
+886	929	1702255894	/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/x86/libapp.so	280c3d177a75155e
+1	843	1702255935	CMakeFiles/app.dir/http.cpp.o	e01caea1bd077b61
+843	880	1702255935	/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/x86/libapp.so	280c3d177a75155e
+1	929	1702256001	CMakeFiles/app.dir/app.cpp.o	19e87317d505bc9f
+929	966	1702256001	/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/x86/libapp.so	280c3d177a75155e

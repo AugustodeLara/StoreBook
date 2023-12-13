@@ -1,0 +1,43 @@
+{
+  "buildFiles": [
+    "/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/home/aglara/Android/Sdk/cmake/3.18.1/bin/ninja",
+      "-C",
+      "/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/.cxx/Debug/41o3n1s4/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/home/aglara/Android/Sdk/cmake/3.18.1/bin/ninja",
+    "-C",
+    "/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/.cxx/Debug/41o3n1s4/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "app::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86_64",
+      "artifactName": "app",
+      "output": "/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/x86_64/libapp.so",
+      "runtimeFiles": [
+        "/home/aglara/.gradle/caches/transforms-3/c225408ffd12ee8d5466fa04fc7734d2/transformed/jetified-curl-7.79.1-beta-1/prefab/modules/curl/libs/android.x86_64/libcurl.so",
+        "/home/aglara/.gradle/caches/transforms-3/da8885faedad5e03fe3cd1a84133783f/transformed/jetified-jsoncpp-1.9.5-beta-1/prefab/modules/jsoncpp/libs/android.x86_64/libjsoncpp.so",
+        "/home/aglara/.gradle/caches/transforms-3/77151bcfb2f5bbfdc9f1b26aea524e73/transformed/jetified-openssl-1.1.1l-beta-1/prefab/modules/crypto/libs/android.x86_64/libcrypto.so",
+        "/home/aglara/.gradle/caches/transforms-3/77151bcfb2f5bbfdc9f1b26aea524e73/transformed/jetified-openssl-1.1.1l-beta-1/prefab/modules/ssl/libs/android.x86_64/libssl.so"
+      ]
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/home/aglara/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/home/aglara/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

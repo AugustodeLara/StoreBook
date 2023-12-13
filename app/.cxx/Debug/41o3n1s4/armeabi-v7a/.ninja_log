@@ -1,0 +1,19 @@
+# ninja log v5
+1	958	1702255317	CMakeFiles/app.dir/app.cpp.o	27741333757fdd4e
+1	889	1702255328	CMakeFiles/app.dir/http.cpp.o	f7689cc1f40e2c2e
+1	73	1702241232	CMakeFiles/app.dir/logging.cpp.o	ddad3c23588154a5
+1	443	1702254672	CMakeFiles/app.dir/Book.cpp.o	55141b599d2f45f2
+889	927	1702255328	/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/armeabi-v7a/libapp.so	fafd22466cffe4b9
+1	882	1702255383	CMakeFiles/app.dir/http.cpp.o	f7689cc1f40e2c2e
+1	954	1702255383	CMakeFiles/app.dir/app.cpp.o	27741333757fdd4e
+954	993	1702255383	/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/armeabi-v7a/libapp.so	fafd22466cffe4b9
+1	1048	1702255562	CMakeFiles/app.dir/http.cpp.o	f7689cc1f40e2c2e
+1048	1086	1702255562	/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/armeabi-v7a/libapp.so	fafd22466cffe4b9
+0	902	1702255574	CMakeFiles/app.dir/http.cpp.o	f7689cc1f40e2c2e
+902	940	1702255574	/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/armeabi-v7a/libapp.so	fafd22466cffe4b9
+1	900	1702255778	CMakeFiles/app.dir/http.cpp.o	f7689cc1f40e2c2e
+900	938	1702255778	/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/armeabi-v7a/libapp.so	fafd22466cffe4b9
+0	918	1702255893	CMakeFiles/app.dir/http.cpp.o	f7689cc1f40e2c2e
+918	957	1702255893	/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/armeabi-v7a/libapp.so	fafd22466cffe4b9
+0	903	1702255934	CMakeFiles/app.dir/http.cpp.o	f7689cc1f40e2c2e
+903	942	1702255934	/home/aglara/AndroidStudioProjects/ndk-samples/prefab/curl-ssl/app/build/intermediates/cxx/Debug/41o3n1s4/obj/armeabi-v7a/libapp.so	fafd22466cffe4b9

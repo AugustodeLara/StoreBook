@@ -1,0 +1,3 @@
+/home/aglara/AndroidStudioProjects/bookStore/app/.cxx/Debug/431a1i53/x86/CMakeFiles/rebuild_cache.dir
+/home/aglara/AndroidStudioProjects/bookStore/app/.cxx/Debug/431a1i53/x86/CMakeFiles/edit_cache.dir
+/home/aglara/AndroidStudioProjects/bookStore/app/.cxx/Debug/431a1i53/x86/CMakeFiles/app.dir

@@ -1,0 +1,52 @@
+<!-- res/layout/activity_main.xml -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Toolbar para o título e botão "Favoritos" -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary">
+
+        <!-- Título do projeto -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/store"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:layout_gravity="start" />
+
+        <!-- Espaço para alinhar à direita -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!-- Botão "Favoritos" -->
+        <Button
+            android:id="@+id/favoritesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="#CDDC39"
+            android:text="Favoritos"
+            android:textColor="@android:color/white" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- RecyclerView abaixo da Toolbar -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar" />
+
+</RelativeLayout>

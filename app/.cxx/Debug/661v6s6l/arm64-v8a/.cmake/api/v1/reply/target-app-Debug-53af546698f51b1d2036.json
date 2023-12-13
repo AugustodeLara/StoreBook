@@ -1,0 +1,205 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "/home/aglara/AndroidStudioProjects/curl-ssl/app/build/intermediates/cxx/Debug/661v6s6l/obj/arm64-v8a/libapp.so"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"target_compile_options"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 31,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 34,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 33,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -fno-limit-debug-info  -fPIC"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-Werror"
+				},
+				{
+					"fragment" : "-std=gnu++17"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"define" : "app_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/aglara/.gradle/caches/transforms-3/c225408ffd12ee8d5466fa04fc7734d2/transformed/jetified-curl-7.79.1-beta-1/prefab/modules/curl/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/aglara/.gradle/caches/transforms-3/77151bcfb2f5bbfdc9f1b26aea524e73/transformed/jetified-openssl-1.1.1l-beta-1/prefab/modules/crypto/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/aglara/.gradle/caches/transforms-3/77151bcfb2f5bbfdc9f1b26aea524e73/transformed/jetified-openssl-1.1.1l-beta-1/prefab/modules/ssl/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "/home/aglara/.gradle/caches/transforms-3/da8885faedad5e03fe3cd1a84133783f/transformed/jetified-jsoncpp-1.9.5-beta-1/prefab/modules/jsoncpp/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3
+			],
+			"sysroot" : 
+			{
+				"path" : "/home/aglara/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
+			}
+		}
+	],
+	"id" : "app::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-Wl,--build-id=sha1 -Wl,--no-rosegment -Wl,--fatal-warnings -Wl,--gc-sections -Wl,--no-undefined -Qunused-arguments",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/aglara/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/aarch64-linux-android/21/liblog.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/aglara/.gradle/caches/transforms-3/c225408ffd12ee8d5466fa04fc7734d2/transformed/jetified-curl-7.79.1-beta-1/prefab/modules/curl/libs/android.arm64-v8a/libcurl.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "/home/aglara/.gradle/caches/transforms-3/da8885faedad5e03fe3cd1a84133783f/transformed/jetified-jsoncpp-1.9.5-beta-1/prefab/modules/jsoncpp/libs/android.arm64-v8a/libjsoncpp.so",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-Wl,--no-undefined",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/aglara/.gradle/caches/transforms-3/77151bcfb2f5bbfdc9f1b26aea524e73/transformed/jetified-openssl-1.1.1l-beta-1/prefab/modules/crypto/libs/android.arm64-v8a/libcrypto.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/home/aglara/.gradle/caches/transforms-3/77151bcfb2f5bbfdc9f1b26aea524e73/transformed/jetified-openssl-1.1.1l-beta-1/prefab/modules/ssl/libs/android.arm64-v8a/libssl.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-latomic -lm",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX",
+		"sysroot" : 
+		{
+			"path" : "/home/aglara/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
+		}
+	},
+	"name" : "app",
+	"nameOnDisk" : "libapp.so",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "app.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "http.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "logging.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Book.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

@@ -1,0 +1,59 @@
+<!-- activity_book_detail.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/detailThumbnail"
+        android:layout_width="120dp"
+        android:layout_height="180dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/detailId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailThumbnail"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/detailTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailId"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/detailDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailTitle"
+        android:layout_marginTop="8dp" />
+
+    <!-- Adicione o botão de Favoritar -->
+    <Button
+        android:id="@+id/buttonFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailDescription"
+        android:layout_marginTop="16dp"
+        android:text="Favoritar"
+        android:backgroundTint="@android:color/holo_red_light"
+    />
+
+    <Button
+        android:id="@+id/buttonBuy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonFavorite"
+        android:layout_marginTop="16dp"
+        android:text="Buy"
+        android:backgroundTint="@android:color/holo_blue_light"
+        />
+</RelativeLayout>
