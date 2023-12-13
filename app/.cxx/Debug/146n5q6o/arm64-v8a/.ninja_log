@@ -12,3 +12,6 @@
 1	924	1702433447	CMakeFiles/app.dir/https.cpp.o	22bbed21df6c4409
 1	1226	1702433447	CMakeFiles/app.dir/app.cpp.o	c501c2a728d16e4
 1226	1275	1702433447	/home/aglara/AndroidStudioProjects/lojaLivros/app/build/intermediates/cxx/Debug/146n5q6o/obj/arm64-v8a/libapp.so	f8e068a6567aead9
+2	1958	1702434200	CMakeFiles/app.dir/app.cpp.o	c501c2a728d16e4
+1958	2084	1702434201	/home/aglara/AndroidStudioProjects/lojaLivros/app/build/intermediates/cxx/Debug/146n5q6o/obj/arm64-v8a/libapp.so	f8e068a6567aead9
+0	4	0	clean	6b854b9151ad94e9

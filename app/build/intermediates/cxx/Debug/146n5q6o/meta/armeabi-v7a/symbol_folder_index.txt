@@ -1,1 +1,0 @@
-/home/aglara/AndroidStudioProjects/lojaLivros/app/build/intermediates/cxx/Debug/146n5q6o/obj/armeabi-v7a

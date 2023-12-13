@@ -1,3 +1,0 @@
-ninja: Entering directory `/home/aglara/AndroidStudioProjects/lojaLivros/app/.cxx/Debug/146n5q6o/x86'
-[1/2] Building CXX object CMakeFiles/app.dir/app.cpp.o
-[2/2] Linking CXX shared library /home/aglara/AndroidStudioProjects/lojaLivros/app/build/intermediates/cxx/Debug/146n5q6o/obj/x86/libapp.so
