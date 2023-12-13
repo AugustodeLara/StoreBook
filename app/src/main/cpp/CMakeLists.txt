@@ -28,7 +28,7 @@ find_library( # Sets the name of the path variable.
         # you want CMake to locate.
         log)
 
-add_library(app SHARED app.cpp https.cpp logging.cpp Book.cpp)
+add_library(app SHARED app.cpp https.cpp logging.cpp Book.cpp BookManager.cpp)
 set_target_properties(app PROPERTIES CXX_STANDARD 17)
 target_compile_options(app PRIVATE -Wall -Werror)
 target_link_libraries(app ${log-lib} curl::curl jsoncpp::jsoncpp -Wl,--no-undefined)

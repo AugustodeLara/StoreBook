@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.example.bookStore.MainActivity"
+        <activity android:name="com.example.bookStore.ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,15 +24,15 @@
         </activity>
 
         <activity
-            android:name="com.example.bookStore.BookDetailActivity"
+            android:name="com.example.bookStore.ui.main.BookDetailActivity"
             android:label="@string/title_activity_book_detail"
-            android:parentActivityName="com.example.bookStore.MainActivity">
+            android:parentActivityName="com.example.bookStore.ui.main.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.bookStore.MainActivity" />
+                android:value="com.example.bookStore.ui.main.MainActivity" />
         </activity>
 
-        <activity android:name="com.example.bookStore.FavoritesActivity" />
+        <activity android:name="com.example.bookStore.ui.favorites.FavoritesActivity" />
     </application>
 
 </manifest>

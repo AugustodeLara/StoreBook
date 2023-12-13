@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:backgroundTint="#CDDC39"
-            android:text="Favoritos"
+            android:text="MY FAVORITES"
             android:textColor="@android:color/white" />
 
     </androidx.appcompat.widget.Toolbar>
@@ -52,6 +52,12 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/separator" />
+        android:layout_below="@+id/separator"
+        android:clipToPadding="false"
+        android:columnWidth="160dp"
+        android:horizontalSpacing="4dp"
+        android:numColumns="auto_fit"
+        android:padding="4dp"
+        android:verticalSpacing="4dp" />
 
 </RelativeLayout>

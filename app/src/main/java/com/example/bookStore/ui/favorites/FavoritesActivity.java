@@ -1,4 +1,4 @@
-package com.example.bookStore;
+package com.example.bookStore.ui.favorites;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 
+import com.example.bookStore.ui.favorites.adapter.FavoritesAdapter;
 import com.example.curlssl.R;
 
 import java.util.ArrayList;
@@ -23,52 +24,44 @@ public class FavoritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
-        recyclerView = findViewById(R.id.favoritesRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        adapter = new FavoritesAdapter(new ArrayList<>(), this);
+        setupRecyclerView();
 
         loadAndDisplayFavoriteBooks();
     }
 
-    private void loadAndDisplayFavoriteBooks() {
-        // Chamar a função JNI para obter os livros favoritos do CSV
-        String[] favoriteBooksArray = getFavoritesSaved();
-
-        // Converter o array para uma lista para facilitar o uso
-        List<String> favoriteBooksList = Arrays.asList(favoriteBooksArray);
-
-        // Processar cada string de livro e adicionar à lista do adaptador
-        for (String book : favoriteBooksList) {
-            processBookString(book);
-        }
-
-        // Definir o adaptador na RecyclerView
+    private void setupRecyclerView() {
+        recyclerView = findViewById(R.id.favoritesRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new FavoritesAdapter(new ArrayList<>(), this);
         recyclerView.setAdapter(adapter);
     }
 
+    private void loadAndDisplayFavoriteBooks() {
+        String[] favoriteBooksArray = getFavoritesSaved();
+        List<String> favoriteBooksList = Arrays.asList(favoriteBooksArray);
+
+        for (String book : favoriteBooksList) {
+            processBookString(book);
+        }
+    }
+
     private void processBookString(String bookString) {
-        // Remover delimitadores duplicados e garantir que haja pelo menos 4 partes
         String[] bookDetails = bookString.split("\\*\\*");
 
-
-        // Verificar se há pelo menos 4 partes (ID, Título, Descrição, URL da Imagem)
         if (bookDetails.length >= 4) {
             String id = bookDetails[0];
             String title = bookDetails[1];
             String description = bookDetails[2];
             String image = bookDetails[3];
 
-            Log.v("FavoritesActivity", "Detalhes do livro: ID=" + id + ", Title=" + title + ", Description=" + description + ", Image=" + image);
+            Log.v("FavoritesActivity", String.format("Detalhes do livro: ID=%s, Title=%s, Description=%s, Image=%s", id, title, description, image));
 
-            // Adicionar à lista do adaptador
             adapter.addBook(id, title, description, image);
         } else {
             Log.e("FavoritesActivity", "String de livro mal formatada: " + bookString);
         }
     }
 
-    // Declaração da função JNI para obter os livros favoritos
     private native String[] getFavoritesSaved();
 
     static {

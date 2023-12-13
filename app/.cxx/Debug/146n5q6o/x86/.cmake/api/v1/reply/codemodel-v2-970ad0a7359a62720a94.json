@@ -38,7 +38,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "app::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-app-Debug-a7075888a5367a57680d.json",
+					"jsonFile" : "target-app-Debug-e94b466928ba4cc340ba.json",
 					"name" : "app",
 					"projectIndex" : 0
 				}
@@ -48,7 +48,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/aglara/AndroidStudioProjects/lojaLivros/app/.cxx/Debug/146n5q6o/arm64-v8a",
+		"build" : "/home/aglara/AndroidStudioProjects/lojaLivros/app/.cxx/Debug/146n5q6o/x86",
 		"source" : "/home/aglara/AndroidStudioProjects/lojaLivros/app/src/main/cpp"
 	},
 	"version" : 
